@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3c799c8562fbcccd566a5ebc10908ac7c0ce9f8e273578a59c7ec75f5538af0f
-size 461
+class EventManager:
+    def __init__(self):
+        self.listeners = {}
+
+    def subscribe(self, event_type, listener):
+        if event_type not in self.listeners:
+            self.listeners[event_type] = []
+        self.listeners[event_type].append(listener)
+
+    def post(self, event_type, *args, **kwargs):
+        if event_type in self.listeners:
+            for listener in self.listeners[event_type]:
+                listener(*args, **kwargs)

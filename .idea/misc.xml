@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:600f513fc990ce4c4e986775f9167285e6c0f8fcf46601c6e50bdb64b3cffb4c
-size 291
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Python 3.12" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="C:\ProgramData\anaconda3" project-jdk-type="Python SDK" />
+</project>

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:25fc482f860d5ca1ce3ae8dba04c0f56083c1c8cf1fba3c0b5933206ba782552
-size 319
+# coding: utf-8
+# 初始化文件
+from init import *
+from windows import *
+from event_manager import EventManager
+# 初始化事件管理器
+event_manager = EventManager()
+
+# 动态显示页面
+startup_screen = StartupScreen(screen)
+
+if __name__ == '__main__': 
+    startup_screen.show()
+    home_page(event_manager)
+
+

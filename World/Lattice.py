@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c35bc27760bc894bf6924fa5a2291f78adc514fdf1d32b66909825e0cc32eea4
-size 322
+# 地图瓦片信息
+class Lattice:
+    def __init__(self, type, state, height, terrain, race):
+        self.type = type  # 瓦片类型
+        self.state = state  # 瓦片状态
+        self.height = height  # 高度
+        self.terrain = terrain  # 忘记是啥了
+        self.race = race  # 该瓦片上有无角色

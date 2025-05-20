@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:47add637c41db95ffcc5003792f9876c8d73ee037d38e26744237abd324897ee
-size 183
+from roles.unit import Unit
+
+
+class EnemyUnit(Unit):
+    def __init__(self, ID, name, x, y):
+        super().__init__(ID, name)  # 基础设定
+
+        self.x = x
+        self.y = y

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b823a1dfbc9f9d6564255890a1b70a4baeeff7aadba50507343c751e238aecb6
-size 253
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/data/buff.CSV" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/data/skill.CSV" charset="GBK" />
+  </component>
+</project>
