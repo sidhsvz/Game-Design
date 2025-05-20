@@ -16,6 +16,10 @@ from PIL import Image
 import shutil
 import random
 
+import battle
+import pygame
+
+
 
 # 按键类（菜单中的按钮）
 class Button(object):
@@ -267,6 +271,7 @@ class GameMap:
             ("艾尔文", "我倒要看看你的能耐。"),
             ("旁白", "莱欧斯劝说无果，唯有打断他们的战斗，才能进入迷宫。")
         ], WIDTH, HEIGHT)
+
 
     def save_state(self):
         filename = f"save/leve{self.level}.pkl"
@@ -1068,21 +1073,43 @@ class World:
                     self.Action_change()
 
                     self.current_action = None  # 复位当前动作
+            # elif self.current_action == "attack" and (row, col) in self.selected_border_positions:
+            #     target = self.find_race(row, col)
+            #     if isinstance(target, enemy.EnemyUnit):
+            #         damage = self.Action[0].attack(target)
+            #         self.damage_show(damage,
+            #                          (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1] - self.tile_size / 2))
+
+            #         self.check_health(target)
+
+            #         self.draw_border = False
+            #         self.Action[0].action -= 25
+            #         self.Action_change()
+            #         self.current_action = None  # 复位当前动作
+            #     else:
+            #         print("Invalid target!")
             elif self.current_action == "attack" and (row, col) in self.selected_border_positions:
                 target = self.find_race(row, col)
                 if isinstance(target, enemy.EnemyUnit):
-                    damage = self.Action[0].attack(target)
-                    self.damage_show(damage,
-                                     (pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1] - self.tile_size / 2))
-
-                    self.check_health(target)
-
+                    # -------------------- 直接启动战斗界面（不传递参数）--------------------
+                    import subprocess
+                    import sys
+                    
+                    # 运行 battle.py（假设文件路径正确，与主程序在同一目录）
+                    try:
+                        # 使用 subprocess 启动新进程运行 battle.py
+                        subprocess.run([sys.executable, "battle.py"], check=True)
+                        print("战斗界面已关闭，返回地图界面")
+                    except Exception as e:
+                        print(f"启动战斗界面失败: {e}")
+                    
+                    # 重置当前动作（无需处理角色状态，因为未传递数据）
                     self.draw_border = False
-                    self.Action[0].action -= 25
-                    self.Action_change()
-                    self.current_action = None  # 复位当前动作
+                    self.current_action = None
+                    # -----------------------------------------------------------
                 else:
                     print("Invalid target!")
+
             elif self.current_action == "skill" and (row, col) in self.selected_border_positions:
                 target = self.find_race(row, col)
                 role = self.Action[0]
